@@ -1,9 +1,11 @@
+import os
+
 from sqlalchemy.orm import Session
 
 from app.models.url_model import URL
 from app.utils.generator import generate_short_code
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8000").rstrip("/")
 
 
 def _generate_unique_code(db: Session) -> str:
